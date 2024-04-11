@@ -52,14 +52,14 @@
 											FROM product
 			<if test="searchCondition != null">
 				<where>
-					<if test="searchCondition == 0 and searchKeyword !='' ">
-		 				prod_no = #{searchKeyword}
-					</if>
-					<if test="searchCondition == 1 and searchKeyword !='' ">
-		 				prod_name = #{searchKeyword}
-					</if>
-					<if test="searchCondition == 2 and searchKeyword !='' ">
-		 				price = #{searchKeyword}
+					<if test="searchCondition == 'no' and searchKeyword !='' ">
+					 			prod_no LIKE  '%'||#{searchKeyword}||'%'
+							</if>
+							<if test="searchCondition == 'name' and searchKeyword !='' ">
+					 			prod_name LIKE  '%'||#{searchKeyword}||'%'
+							</if>
+							<if test="searchCondition == 'price' and searchKeyword !='' ">
+					 			price = #{searchKeyword}
 					</if>
 				</where>
 			</if>
@@ -74,15 +74,25 @@
 					FROM product
 				<if test="searchCondition != null">
 					<where>
-						<if test="searchCondition == 0 and searchKeyword !='' ">
-				 			prod_no = #{searchKeyword}
+						<!-- <if test="searchCondition == 0 and searchKeyword !='' ">
+				 			prod_no LIKE  '%'||#{searchKeyword}||'%'
 						</if>
 						<if test="searchCondition == 1 and searchKeyword !='' ">
-				 		prod_name = #{searchKeyword}
+				 			prod_name LIKE  '%'||#{searchKeyword}||'%'
 						</if>
 						<if test="searchCondition == 2 and searchKeyword !='' ">
-								 				price = #{searchKeyword}
-						</if>
+					 				price = #{searchKeyword}
+						</if> -->
+							<if test="searchCondition == 'no' and searchKeyword !='' ">
+					 			prod_no LIKE  '%'||#{searchKeyword}||'%'
+							</if>
+							<if test="searchCondition == 'name' and searchKeyword !='' ">
+					 			prod_name LIKE  '%'||#{searchKeyword}||'%'
+							</if>
+							<if test="searchCondition == 'price' and searchKeyword !='' ">
+					 			price = #{searchKeyword}
+					</if>
+						
 					</where>
 				</if> ) countTable						
 	 </select>
